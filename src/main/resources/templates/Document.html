@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<h1>Welcome to Document</h1>
+<form action="save" method="post" enctype="multipart/form-data">
+<body>
+            <div class="container">
+                <div class="row">
+                   <div class="col-2">
+                       <label for="docId">ID</label>
+                   </div>
+                   <div class="col-4">
+                       <input type="text" name="docId" id="docId">               
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <label for="docName">File Name</label>
+                    </div>
+                    <div class="col-4">
+                        <input type="file" name="docName" id="docName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <input type="submit" value="UPLOAD" class="btn btn-primary">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table bg-danger">
+                        <tr>
+                            <td>ID</td>
+                            <td>NAME</td>
+                            <td>LINKS</td>                     
+                        </tr>
+                        <tr th:each="ob:${list}">
+                            <td th:text="${ob[0]}"></td>
+                            <td th:text="${ob[1]}"></td>
+                            <td>
+                                    <a th:href="@{/Document/download?id={id}(id=${ob[0]})}" class="btn btn-primary">Download</a>
+                            </td>	
+                            </tr>
+                        
+                    </table>
+                </div>
+        </diV>
+</form>
+</body>
+</html>
